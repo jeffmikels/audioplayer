@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import io.flutter.app.FlutterActivity;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -76,6 +77,8 @@ public class AudioplayersPlugin implements MethodCallHandler {
             }
             case "seek": {
                 double position = call.argument("position");
+                // TODO: check to see if player is ready before sending the seek command
+
                 player.seek(position);
                 break;
             }
@@ -146,9 +149,9 @@ public class AudioplayersPlugin implements MethodCallHandler {
         private final WeakReference<AudioplayersPlugin> audioplayersPlugin;
 
         private UpdateCallback(final Map<String, WrappedMediaPlayer> mediaPlayers,
-                       final MethodChannel channel,
-                       final Handler handler,
-                       final AudioplayersPlugin audioplayersPlugin) {
+                               final MethodChannel channel,
+                               final Handler handler,
+                               final AudioplayersPlugin audioplayersPlugin) {
             this.mediaPlayers = new WeakReference<>(mediaPlayers);
             this.channel = new WeakReference<>(channel);
             this.handler = new WeakReference<>(handler);
@@ -178,6 +181,10 @@ public class AudioplayersPlugin implements MethodCallHandler {
                 final String key = player.getPlayerId();
                 final int duration = player.getDuration();
                 final int time = player.getCurrentPosition();
+
+                // TODO: Before sending channel messages, check to see if the FlutterView
+                // is still attached.
+                // FlutterView fv = getFlutterView();
                 channel.invokeMethod("audio.onDuration", buildArguments(key, duration));
                 channel.invokeMethod("audio.onCurrentPosition", buildArguments(key, time));
             }
