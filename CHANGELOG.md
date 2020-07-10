@@ -1,5 +1,108 @@
 # Changelog
 
+## [next]
+- Implemented stream routing for iOS
+- Call release on dispose
+
+## audioplayers 0.15.1
+- Fix web for release mode
+
+## audioplayers 0.15.0
+- Improve loop/readme for web support
+- Audio cache support for web
+- Re-adding partial web support
+
+## audioplayers 0.14.2
+- Fix pubspec problem because of web file
+
+## audioplayers 0.14.1
+- Adding linter, tests and flutter_driver integration tests to a CI (github actions)
+- Minor fixes to the APIs and documentation
+- Fix restarting the playback of a failed AVPlayerItem
+- Prevent exceptions when null values are passed to notifications center
+- Prevent crash by checking if headlessServiceInitialized before invoking onNotificationBackgroundPlayerStateChanged
+
+## audioplayers 0.14.0
+- Adding macOs support
+- ios:fix lack of seek completion handle
+- ios Delay start fixed
+
+## audioplayers 0.13.7
+- Bump dependencies, improve gitignore
+- Upgrade pubspec pattern
+
+## audioplayers 0.13.6
+ - added `setPlaybackRate` feature for Android
+ - Automatic detect address is local or remote (thanks, @saeed-golshan)
+
+## audioplayers 0.13.5
+ - fixed crash on iOS when `startHeadlessService()` wasn't called on `AudioPlayer` (by @JesseScott)
+
+## audioplayers 0.13.4
+ - fixing missing cleanup on hot restart on Android
+ - Background notification updates on iOS
+
+## audioplayers 0.13.3
+ - audio notification area fixes
+ - fix when other apps are playing sounds
+ - fix android race condition
+ - Support for registering plugin in background enviroment
+ - fix typos and docs
+
+## audioplayers 0.13.2
+ - Handling plugin dealloc and onTimeInterval crashs (thanks @chedechao111)
+ - Audio position update when the audio is paused (thanks @bjornjacobs)
+
+## audioplayers 0.13.1
+ - Added stayAwake feature (thanks, @danielR2001)
+ - Improved dispose method (thanks, @hugocbpassos)
+ - Added getCurrentPosition (thanks, @hariom08)
+ - Some bug fixes and small changes
+
+## audioplayers 0.13.0
+ - Call onDurationChanged after setUrl() to be consistent with ios version (thanks @subhash279)
+ - Adding getDuration feature iOS/Android (thanks @alecorsino)
+
+## audioplayers 0.12.1
+ - Fixes bug where the stream handlers were not called due to exception on the handler
+ - Proper error message when errors in the dart handler occurs
+
+## audioplayers 0.12.0
+ - Update to path_provider 1.1.0
+ - Upgrade to Swift 5 in example project setting (thanks @jerryzhoujw)
+
+## audioplayers 0.11.0
+- **Breaking change**. Migrate from the deprecated original Android Support
+  Library to AndroidX. This shouldn't result in any functional changes, but it
+  requires any Android apps using this plugin to [also
+  migrate](https://developer.android.com/jetpack/androidx/migrate) if they're
+  using the original support library.
+
+## audioplayers 0.10.1
+- Seek and play now works with milliseconds instead of second (thanks, @catoldcui and @erickzanardo)
+
+## audioplayers 0.10.0
+- Added a low latency api for android (thanks, @feroult)
+
+## audioplayers 0.9.0
+- Improved callbacks using Streams to allow for multiple subscibers (thanks, @LucasCLuk)
+- Update uuid version to 2.0.0 (thanks, @BeMacized)
+
+## audioplayers 0.8.2
+- Update path_provider version (thanks, @apiraino)
+
+## audioplayers 0.8.1
+- Fix for duration when playing a stream
+- Added respectSilence flag in audioplayers, or isNotification for play methos in audio_cache
+  False by default, to use player for local notification. Silent when device is in silent mode.
+
+## audioplayers 0.8.0
+- Allow setting seek position in play function (thanks @rob-patchett)
+- Get duration from the underlaying asset instead of from AVPlayerItem (thanks @andressade)
+- Adding player state (thanks @renancaraujo)
+- Set the audio session to active (thanks @benwicks)
+- Delay seek operations on Android until player is ready (thanks @jeffmikels)
+
 ## audioplayers 0.7.8
 - Fix bug regarding name clash with other plugins (thanks @imtaehyun)
 
